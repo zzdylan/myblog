@@ -1,4 +1,4 @@
-baseURL = 'http://localhost:1313/'
+baseURL = 'https://myblog-eight-dusky.vercel.app/'
 languageCode = 'zh-cn'
 title = '技术文档站'
 theme = 'hugo-book'
@@ -12,6 +12,10 @@ theme = 'hugo-book'
   BookRepo = ''
   BookEditPath = ''
   BookPortableLinks = true
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
 
 [markup]
   [markup.highlight]
