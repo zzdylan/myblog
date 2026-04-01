@@ -2,9 +2,8 @@
 title: "首页"
 ---
 
-<meta http-equiv="refresh" content="0; url=/docs/">
-<script>window.location.replace('/docs/');</script>
+# 欢迎
 
-正在跳转到文档页面...
+这里是我的技术文档站，记录开发过程中的笔记和实践经验。
 
-如果没有自动跳转，请点击：[进入文档](/docs/)
+请使用左侧导航浏览文档内容。
