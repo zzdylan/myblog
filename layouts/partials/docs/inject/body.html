@@ -1,0 +1,66 @@
+<!-- 代码复制按钮脚本 -->
+<script>
+(function() {
+  'use strict';
+
+  if (!navigator.clipboard) {
+    console.log('Clipboard API not available');
+    return;
+  }
+
+  // 复制图标 SVG
+  const copyIcon = '<svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+
+  // 对号图标 SVG
+  const checkIcon = '<svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+
+  function addCopyButtons() {
+    // 查找所有代码块容器
+    const highlights = document.querySelectorAll('.highlight');
+
+    highlights.forEach(function(highlight) {
+      // 跳过已经添加按钮的
+      if (highlight.querySelector('.copy-code-button')) {
+        return;
+      }
+
+      const codeBlock = highlight.querySelector('pre code');
+      if (!codeBlock) return;
+
+      // 创建复制按钮
+      const button = document.createElement('button');
+      button.className = 'copy-code-button';
+      button.type = 'button';
+      button.innerHTML = copyIcon + checkIcon;
+      button.setAttribute('aria-label', '复制代码');
+
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const code = codeBlock.innerText;
+
+        navigator.clipboard.writeText(code).then(function() {
+          button.classList.add('copied');
+
+          setTimeout(function() {
+            button.classList.remove('copied');
+          }, 2000);
+        }).catch(function(err) {
+          console.error('复制失败:', err);
+        });
+      });
+
+      // 将按钮插入到highlight容器的开头
+      highlight.insertBefore(button, highlight.firstChild);
+    });
+  }
+
+  // 页面加载完成后添加按钮
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addCopyButtons);
+  } else {
+    addCopyButtons();
+  }
+})();
+</script>

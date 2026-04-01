@@ -1,0 +1,71 @@
+<!-- 代码复制按钮样式 -->
+<style>
+.highlight {
+  position: relative;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(50,50,50,0.9);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.copy-code-button svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+.highlight:hover .copy-code-button {
+  opacity: 1;
+}
+
+.copy-code-button:hover {
+  background: rgba(70,70,70,0.95);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.copy-code-button.copied {
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.copy-code-button .copy-icon {
+  display: block;
+}
+
+.copy-code-button .check-icon {
+  display: none;
+}
+
+.copy-code-button.copied .copy-icon {
+  display: none;
+}
+
+.copy-code-button.copied .check-icon {
+  display: block;
+}
+
+[data-theme="dark"] .copy-code-button {
+  background: rgba(70,70,70,0.95);
+  border-color: rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] .copy-code-button:hover {
+  background: rgba(90,90,90,0.95);
+}
+</style>
